@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<section class="about-area section-gap">
+		<div class="container">
+			<div class="row align-items-baseline justify-content-center">
+                    <form method = "post">
+                        <br><br><br><br><br><br>
+                        <hr>
+                          <p>
+                            Hoşgeldiniz, <small>{{request.user.username}}</small>
+                          </p>
+                        <hr>
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <a class="btn btn-danger" href="{% url 'seyahat:addseyahat'  %}">Seyahat Ekle</a>
+                    </form>
+				</div>
+			</div>
+		</div>
+</section>
+
+{% if Seyahats %}
+<section class="about-area section-gap">
+		<div class="container">
+			<div class="row align-items-baseline justify-content-center">
+                    <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Başlık</th>
+                                <th scope="col">Yazar</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Güncelle</th>
+                                <th scope="col">Sil</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for Seyahat in Seyahats %}
+                                <tr>
+                                    <th scope="row">{{Seyahat.id}}</th>
+                                    <td><a href="{% url 'seyahat:detail' Seyahat.id %}">{{Seyahat.title}}</a></td>
+                                    <td>{{Seyahat.yazar.username}}</td>
+                                    <td>{{Seyahat.created_date}}</td>
+                                    <td><a href="{% url 'seyahat:update' Seyahat.id %}" class="btn btn-danger">Güncelle</a></td>
+                                    <td><a href="{% url 'seyahat:delete' Seyahat.id %}" class="btn btn-danger">Sil</a></td>
+                                </tr>
+                                {% endfor %}
+                        
+                            </tbody>
+                          </table>
+      		</div>
+		</div>
+</section>
+{% else %}
+<div class="alert alert-danger">
+    Henüz bir makale yok...
+</div>
+{% endif %}
+
+
+
+{% endblock body %}

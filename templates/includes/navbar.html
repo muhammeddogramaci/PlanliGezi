@@ -1,0 +1,36 @@
+{% load static %}
+
+
+<header id="header">
+    <div class="container main-menu">
+        <div class="row align-items-center d-flex">
+            <div id="logo">
+                <a href="{% url 'index' %}"><img src="{% static 'img/200.png' %}" alt="" title="" /></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li><a href="{% url 'index' %}">Ana Sayfa</a></li>
+                    <li><a href="{% url 'about' %}">Hakkımızda</a></li>
+                    <li><a href="{% url 'seyahat:seyahat' %}">Seyahatler</a></li>
+                    <li><a href="{% url 'contact' %}">İletişim</a></li>
+                    <!--li><a href="{% url 'seyahat:dashboard' %}">Dashboard</a></!--li>
+
+                    <!--li class="menu-has-children"><a href="#">Avrupa</a>
+                        <ul>
+                            <li><a href="kuzey-avrupa.html">Kuzey Avrupa</a></li>
+                            <li><a href="guney-avrupa.html">Güney Avrupa</a></li>
+                            <li><a href="bati-avrupa.html">Batı Avrupa</a></li>
+                            <li><a href="orta-avrupa.html">Orta Avrupa</a></li>
+                        </ul>
+                    </!--li>
+                    <li class="menu-has-children"><a href="{% url 'seyahat:seyahat' %}">Geziler</a>
+                        <ul>
+                            <li><a href="{% url 'seyahat:seyahat' %}"></a></li>
+                            <li><a href="guneydogu-asya.html">Güney Doğu Asya</a></li>
+                        </ul>
+                    </li-->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
